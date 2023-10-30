@@ -1,3 +1,5 @@
+from product import Produto
+
 class CathegoryTech(Produto):
     qtd_tech = []
     def __init__(self, name, barcode, preco, marca, qtd, categoria):
