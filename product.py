@@ -5,7 +5,7 @@ class Produto:
         self.barcode = barcode
         
   
-    
+    jeghfjgjtnrsr
    
 class Inventario():
    
