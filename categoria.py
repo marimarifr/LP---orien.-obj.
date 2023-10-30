@@ -17,9 +17,3 @@ class CathegoryCloth(Produto):
     def __init__(self, name, barcode, preco, marca, qtd):
         super().__init__(name, barcode, preco, marca, qtd, categoria = "Vestuário")
         CathegoryCloth.total_cloth += self.qtd
-        
-
-
-celular = CathegoryTech("Celular", 1235, 500, "Amazon", 10)
-
-print(CathegoryTech.total_tech)
