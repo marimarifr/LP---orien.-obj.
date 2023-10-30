@@ -28,7 +28,7 @@ class CathegoryBeauty(Produto):
         # Chamando o inicializador da classe Produto com os argumentos fornecidos
         super().__init__(name, barcode, preco, marca, categoria = "Beleza")
         # Incrementando o total de produtos de beleza
-        CathegoryBeauty.total_beauty += self.qtd
+        CathegoryBeauty.total_beauty += 1
     
     # Método para adicionar um produto de beleza à lista
     def add_beauty(self, name):
@@ -45,7 +45,7 @@ class CathegoryCloth(Produto):
         # Chamando o inicializador da classe Produto com os argumentos fornecidos
         super().__init__(name, barcode, preco, marca, categoria = "Vestuário")
         # Incrementando o total de produtos de vestuário
-        CathegoryCloth.total_cloth += self.qtd
+        CathegoryCloth.total_cloth += 1
     
     # Método para adicionar um produto de vestuário à lista
     def add_cloth(self, name):
