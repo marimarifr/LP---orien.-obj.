@@ -1,19 +1,25 @@
 from product import Produto
 
 class CathegoryTech(Produto):
-    qtd_tech = []
-    def __init__(self, name, barcode, preco, marca, qtd, categoria):
-        super().__init__(name, barcode, preco, marca, categoria = "Tecnologia")
-        qtd_tech.append(name)
+    total_tech = 0
+    def __init__(self, name, barcode, preco, marca, qtd):
+        super().__init__(name, barcode, preco, marca, qtd, categoria = "Tecnologia")
+        CathegoryTech.total_tech += self.qtd
 
 class CathegoryBeauty(Produto):
-    qtd_beauty = []
-    def __init__(self, name, barcode, preco, marca, qtd, categoria):
-        super().__init__(name, barcode, preco, marca, categoria = "Beleza")
-        qtd_beauty.append(name)
+    total_beauty = 0
+    def __init__(self, name, barcode, preco, marca, qtd):
+        super().__init__(name, barcode, preco, marca, qtd, categoria = "Beleza")
+        CathegoryBeauty.total_beauty += self.qtd
 
 class CathegoryCloth(Produto):
-     qtd_cloth = []
-    def __init__(self, name, barcode, preco, marca, qtd, categoria):
-        super().__init__(name, barcode, preco, marca, categoria = "Vestuário")
-        qtd_cloth.append(name)
+    total_cloth = 0
+    def __init__(self, name, barcode, preco, marca, qtd):
+        super().__init__(name, barcode, preco, marca, qtd, categoria = "Vestuário")
+        CathegoryCloth.total_cloth += self.qtd
+        
+
+
+celular = CathegoryTech("Celular", 1235, 500, "Amazon", 10)
+
+print(CathegoryTech.total_tech)
