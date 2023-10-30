@@ -1,2 +1,3 @@
-class Inventario():
+class Inventario:
+
    
