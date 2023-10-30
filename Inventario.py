@@ -9,12 +9,9 @@ class CathegoryTech(Produto):
     def __init__(self, name, barcode, preco, marca):
         # Chamando o inicializador da classe Produto com os argumentos fornecidos
         super().__init__(name, barcode, preco, marca, categoria = "Tecnologia")
-        # Incrementando o total de produtos de tecnologia
+        # Incrementando o total e a ista de produtos de tecnologia
         CathegoryTech.total_tech += 1
-
-    # Método para adicionar um produto de tecnologia à lista
-    def add_tech(self, name):
-        self.prod_tech.append(name)
+        CathegoryTech.prod_tech.append(self.name)
 
 
 class CathegoryBeauty(Produto):
@@ -27,10 +24,7 @@ class CathegoryBeauty(Produto):
         super().__init__(name, barcode, preco, marca, categoria = "Beleza")
         # Incrementando o total de produtos de beleza
         CathegoryBeauty.total_beauty += 1
-    
-    # Método para adicionar um produto de beleza à lista
-    def add_beauty(self, name):
-        self.prod_beauty.append(name)
+        CathegoryBeauty.prod_beauty.append(self.name)
 
 
 class CathegoryCloth(Produto):
@@ -43,10 +37,7 @@ class CathegoryCloth(Produto):
         super().__init__(name, barcode, preco, marca, categoria = "Vestuário")
         # Incrementando o total de produtos de vestuário
         CathegoryCloth.total_cloth += 1
-    
-    # Método para adicionar um produto de vestuário à lista
-    def add_cloth(self, name):
-        self.prod_cloth.append(name)
+        CathegoryCloth.prod_cloth.append(self.name)
 
 # Definindo uma classe Inventario que herda de CathegoryBeauty, CathegoryCloth, CathegoryTech
 class Inventario(CathegoryBeauty, CathegoryCloth, CathegoryTech):
@@ -100,7 +91,7 @@ class Inventario(CathegoryBeauty, CathegoryCloth, CathegoryTech):
             else:
                 raise Exception(f"Não há produtos suficientes na categoria vestuário para vender {quantidade} unidades.")
         else:
-            raise Exception("Categoria inválida."
+            raise Exception("Categoria inválida.")
     
 
 
