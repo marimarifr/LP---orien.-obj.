@@ -9,7 +9,11 @@ class Produto:
    
 class Inventario():
    
-
+class Marcas(Enum):
+    Marca_1 = 1
+    Marca_2 = 2
+    Marca_3 = 3
+    Marca_4 = 4
 
 
 
