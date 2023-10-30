@@ -1,6 +1,5 @@
 from product import Produto
 
-
 class CathegoryTech(Produto):
     # Variáveis de classe para manter o total de produtos de tecnologia e uma lista de produtos de tecnologia
     total_tech = 0
@@ -69,51 +68,66 @@ class Inventario(CathegoryBeauty, CathegoryCloth, CathegoryTech):
         # Retornando uma string formatada com as informações
         return f"  Total de itens no estoque: {total} \n  Total na categoria tecnologia: {tech} \n  Total na categoria vestuário: {cloth} \n  Total na categoria beleza: {beauty}"
 
+
+
+
+
+
+
     # Método para vender um produto
-    def vender_produto(self, categoria, quantidade):
-        # Verifica a categoria do produto
+    def vender_produto(self, name, categoria, quantidade):
+    # Verifica a categoria do produto
         if categoria == 'tech':
             # Verifica se há produtos suficientes na categoria 'tech'
-            if quantidade <= len(self.tech):
+            if quantidade <= len(self.tech.prod_tech):  # Verifica o comprimento da lista prod_tech
                 # Remove a quantidade de produtos vendidos da lista de produtos 'tech'
-                self.tech = self.tech[quantidade:]
+                self.tech.prod_tech = self.tech.prod_tech[quantidade:]
                 # Atualiza o total de produtos de tecnologia vendidos
                 CathegoryTech.total_tech -= quantidade
             else:
                 # Gera uma exceção se não houver produtos suficientes
                 raise Exception(f"Não há produtos suficientes na categoria tecnologia para vender {quantidade} unidades.")
         elif categoria == 'beauty':
-            if quantidade <= len(self.beauty):
-                self.beauty = self.beauty[quantidade:]
+            if quantidade <= len(self.beauty.prod_beauty):  # Verifica o comprimento da lista prod_beauty
+                self.beauty.prod_beauty = self.beauty.prod_beauty[quantidade:]
                 CathegoryBeauty.total_beauty -= quantidade
             else:
                 raise Exception(f"Não há produtos suficientes na categoria beleza para vender {quantidade} unidades.")
         elif categoria == 'cloth':
-            if quantidade <= len(self.cloth):
-                self.cloth = self.cloth[quantidade:]
+            if quantidade <= len(self.cloth.prod_cloth):  # Verifica o comprimento da lista prod_cloth
+                self.cloth.prod_cloth = self.cloth.prod_cloth[quantidade:]
                 CathegoryCloth.total_cloth -= quantidade
             else:
                 raise Exception(f"Não há produtos suficientes na categoria vestuário para vender {quantidade} unidades.")
         else:
-            raise Exception("Categoria inválida.")
-        
-# Método repor produtos no estoque
-def repor_produto(self, categoria, quantidade):
-    # Verifica a categoria do produto
-    if categoria == 'tech':
-        # Remove a quantidade de produtos da categoria 'tech'
-        self.tech = self.tech[quantidade:]
-        # Atualiza o total de produtos de tecnologia vendidos
-        CathegoryTech.total_tech += quantidade
-        
-    elif categoria == 'beauty':
-        # Remove a quantidade de produtos da categoria 'beauty'
-        self.beauty = self.beauty[quantidade:]
-        # Atualiza o total de produtos de beleza vendidos
-        CathegoryBeauty.total_beauty += quantidade
+            raise Exception("Categoria inválida."
     
-    elif categoria == 'cloth':
-        # Remove a quantidade de produtos da categoria 'cloth'
-        self.cloth = self.cloth[quantidade:]
-        # Atualiza o total de produtos de vestuário vendidos
-        CathegoryCloth.total_cloth += quantidade
+
+
+
+
+
+
+
+
+    # Método repor produtos no estoque
+    def repor_produto(self, name, categoria, quantidade):
+        # Verifica a categoria do produto
+        if categoria == 'tech':
+            # Remove a quantidade de produtos da categoria 'tech'
+            self.tech = self.tech[quantidade:]
+            # Atualiza o total de produtos de tecnologia vendidos
+            CathegoryTech.total_tech += quantidade
+        
+        elif categoria == 'beauty':
+            # Remove a quantidade de produtos da categoria 'beauty'
+            self.beauty = self.beauty[quantidade:]
+            # Atualiza o total de produtos de beleza vendidos
+            CathegoryBeauty.total_beauty += quantidade
+    
+        elif categoria == 'cloth':
+            # Remove a quantidade de produtos da categoria 'cloth'
+            self.cloth = self.cloth[quantidade:]
+            # Atualiza o total de produtos de vestuário vendidos
+            CathegoryCloth.total_cloth += quantidade
+
