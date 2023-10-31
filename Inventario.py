@@ -110,23 +110,30 @@ class Inventario(CathegoryBeauty, CathegoryCloth, CathegoryTech):
 
 
     # Método repor produtos no estoque
-    def repor_produto(self, name, categoria, quantidade):
-        # Verifica a categoria do produto
-        if categoria == 'tech':
-            # Remove a quantidade de produtos da categoria 'tech'
-            self.tech = self.tech[quantidade:]
-            # Atualiza o total de produtos de tecnologia vendidos
-            CathegoryTech.total_tech += quantidade
+    def repor_produto(self, name, categoria):
+       # Verifica a categoria do produto
+        if categoria == "Tecnologia":
+            # Acessando os dados da respectiva categoria
+            prod = CathegoryTech.prod_tech
+            total = CathegoryTech.total_tech
+            # Adiciona o nome do produto na lista e aumenta a quantidade
+            prod.append(name)
+            total += 1
         
-        elif categoria == 'beauty':
-            # Remove a quantidade de produtos da categoria 'beauty'
-            self.beauty = self.beauty[quantidade:]
-            # Atualiza o total de produtos de beleza vendidos
-            CathegoryBeauty.total_beauty += quantidade
-    
-        elif categoria == 'cloth':
-            # Remove a quantidade de produtos da categoria 'cloth'
-            self.cloth = self.cloth[quantidade:]
-            # Atualiza o total de produtos de vestuário vendidos
-            CathegoryCloth.total_cloth += quantidade
-
+        # Verifica a categoria do produto
+        if categoria == "Beleza":
+            # Acessando os dados da respectiva categoria
+            prod = CathegoryBeauty.prod_beauty
+            total = CathegoryBeauty.total_beauty
+            # Adiciona o nome do produto na lista e aumenta a quantidade
+            prod.append(name)
+            total += 1
+        
+        # Verifica a categoria do produto    
+        if categoria == "Vestuário":
+            # Acessando os dados da respectiva categoria
+            prod = CathegoryCloth.prod_cloth
+            total = CathegoryCloth.total_cloth
+            # Adiciona o nome do produto na lista e aumenta a quantidade
+            prod.append(name)
+            total += 1
