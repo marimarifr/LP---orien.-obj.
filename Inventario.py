@@ -66,35 +66,43 @@ class Inventario(CathegoryBeauty, CathegoryCloth, CathegoryTech):
 
 
     # Método para vender um produto
-    def vender_produto(self, name, categoria, quantidade):
+    def vender_produto(self, name, categoria):
+
     # Verifica a categoria do produto
-        if categoria == 'tech':
-            # Verifica se há produtos suficientes na categoria 'tech'
-            if quantidade <= len(self.tech.prod_tech):  # Verifica o comprimento da lista prod_tech
-                # Remove a quantidade de produtos vendidos da lista de produtos 'tech'
-                self.tech.prod_tech = self.tech.prod_tech[quantidade:]
-                # Atualiza o total de produtos de tecnologia vendidos
-                CathegoryTech.total_tech -= quantidade
-            else:
-                # Gera uma exceção se não houver produtos suficientes
-                raise Exception(f"Não há produtos suficientes na categoria tecnologia para vender {quantidade} unidades.")
-        elif categoria == 'beauty':
-            if quantidade <= len(self.beauty.prod_beauty):  # Verifica o comprimento da lista prod_beauty
-                self.beauty.prod_beauty = self.beauty.prod_beauty[quantidade:]
-                CathegoryBeauty.total_beauty -= quantidade
-            else:
-                raise Exception(f"Não há produtos suficientes na categoria beleza para vender {quantidade} unidades.")
-        elif categoria == 'cloth':
-            if quantidade <= len(self.cloth.prod_cloth):  # Verifica o comprimento da lista prod_cloth
-                self.cloth.prod_cloth = self.cloth.prod_cloth[quantidade:]
-                CathegoryCloth.total_cloth -= quantidade
-            else:
-                raise Exception(f"Não há produtos suficientes na categoria vestuário para vender {quantidade} unidades.")
-        else:
-            raise Exception("Categoria inválida.")
-    
-
-
+        if categoria == "Tecnologia":
+            # Acessando os dados da respectiva categoria
+            prod = CathegoryTech.prod_tech
+            total = CathegoryTech.total_tech
+            # Verifica se o proudto está em estoque e levanta a exceção própria
+            if name not in prod:
+                raise ProductError
+            # Se não houver erros retira o produto e diminui a quantidade
+            prod.remove(name)
+            total -= 1
+        
+        # Verifica a categoria do produto
+        if categoria == "Beleza":
+            # Acessando os dados da respectiva categoria
+            prod = CathegoryBeauty.prod_beauty
+            total = CathegoryBeauty.total_beauty
+            # Verifica se o proudto está em estoque e levanta a exceção própria
+            if name not in prod:
+                raise ProductError
+            # Se não houver erros retira o produto e diminui a quantidade
+            prod.remove(name)
+            total -= 1
+        
+        # Verifica a categoria do produto    
+        if categoria == "Vestuário":
+            # Acessando os dados da respectiva categoria
+            prod = CathegoryCloth.prod_cloth
+            total = CathegoryCloth.total_cloth
+            # Verifica se o proudto está em estoque e levanta a exceção própria
+            if name not in prod:
+                raise ProductError
+            # Se não houver erros retira o produto e diminui a quantidade
+            prod.remove(name)
+            total -= 1
 
 
 
