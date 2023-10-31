@@ -25,4 +25,3 @@ print(invent.get_info())
 
 # Exemplo de erro
 invent.vender_produto("Blusa", "Beleza")
-print(invent.vender_produto("Tablet", "Tecnologia"))
