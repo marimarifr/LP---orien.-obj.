@@ -1,4 +1,4 @@
-from product import Produto
+from product import Produto, ProductError
 
 class CathegoryTech(Produto):
     # Variáveis de classe para manter o total de produtos de tecnologia e uma lista de produtos de tecnologia
@@ -69,7 +69,7 @@ class Inventario(CathegoryBeauty, CathegoryCloth, CathegoryTech):
     def vender_produto(self, name, categoria):
 
     # Verifica a categoria do produto
-        if categoria == "Tecnologia":
+        if categoria == "Tecnologia":            
             # Acessando os dados da respectiva categoria
             prod = CathegoryTech.prod_tech
             total = CathegoryTech.total_tech
@@ -77,20 +77,19 @@ class Inventario(CathegoryBeauty, CathegoryCloth, CathegoryTech):
             if name not in prod:
                 raise ProductError
             # Se não houver erros retira o produto e diminui a quantidade
-            prod.remove(name)
-            total -= 1
+            CathegoryTech.prod_tech.remove(name)
+            CathegoryTech.total_tech -= 1
         
         # Verifica a categoria do produto
         if categoria == "Beleza":
             # Acessando os dados da respectiva categoria
             prod = CathegoryBeauty.prod_beauty
-            total = CathegoryBeauty.total_beauty
             # Verifica se o proudto está em estoque e levanta a exceção própria
             if name not in prod:
                 raise ProductError
             # Se não houver erros retira o produto e diminui a quantidade
             prod.remove(name)
-            total -= 1
+            CathegoryBeauty.total_beauty -= 1
         
         # Verifica a categoria do produto    
         if categoria == "Vestuário":
@@ -102,7 +101,7 @@ class Inventario(CathegoryBeauty, CathegoryCloth, CathegoryTech):
                 raise ProductError
             # Se não houver erros retira o produto e diminui a quantidade
             prod.remove(name)
-            total -= 1
+            CathegoryCloth.total_cloth -= 1
 
 
     # Método repor produtos no estoque
@@ -132,4 +131,4 @@ class Inventario(CathegoryBeauty, CathegoryCloth, CathegoryTech):
             total = CathegoryCloth.total_cloth
             # Adiciona o nome do produto na lista e aumenta a quantidade
             prod.append(name)
-            total += 1
+            total = total + 1

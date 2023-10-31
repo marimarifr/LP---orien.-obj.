@@ -7,9 +7,22 @@ blusa = CathegoryCloth("Blusa", 6598, 25.69,Marcas.Renner)
 jaqueta = CathegoryCloth("Jaqueta", 3357, 152.02,Marcas.Renner)
 
 invent = Inventario()
-#print(invent.get_info())
-#invent.repor_produto(blusa, 'cloth', 1)
-#print(invent.get_info())
-#print(invent.get_info())
+print(invent.get_info())
 
-invent.vender_produto(tablet, 'tech', 1)
+print(CathegoryCloth.prod_cloth)
+print(CathegoryBeauty.prod_beauty)
+print(CathegoryTech.prod_tech)
+
+#Testando venda de produtos
+invent.vender_produto("Jaqueta", "Vestuário")
+print(invent.get_info())
+
+
+#Testando reposição de produtos
+invent.repor_produto("Tablet", "Tecnologia")
+invent.repor_produto("Tablet", "Tecnologia")
+print(invent.get_info())
+
+# Exemplo de erro
+invent.vender_produto("Blusa", "Beleza")
+print(invent.vender_produto("Tablet", "Tecnologia"))
