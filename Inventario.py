@@ -105,10 +105,6 @@ class Inventario(CathegoryBeauty, CathegoryCloth, CathegoryTech):
             total -= 1
 
 
-
-
-
-
     # Método repor produtos no estoque
     def repor_produto(self, name, categoria):
        # Verifica a categoria do produto
